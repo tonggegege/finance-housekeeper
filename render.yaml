@@ -14,7 +14,3 @@ services:
         generateValue: true
       - key: CORS_ORIGIN
         value: "https://finance-housekeeper.vercel.app"
-    disk:
-      name: data
-      mountPath: /data
-      sizeGB: 1
