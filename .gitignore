@@ -27,8 +27,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Data (optional - don't commit user data to git)
-# data/
+# Data - 个人账本数据，绝不能推到公开仓库
+data/
 
 # Vite
 .vite/
