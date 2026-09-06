@@ -1,0 +1,566 @@
+{
+  "users": [
+    {
+      "id": "f413eee5-9e44-48e3-afbf-882b471aba88",
+      "username": "testuser",
+      "passwordHash": "$2b$10$pAy1HO0Q2TiHSOR2NPShie.e.i18mtgTPS3czr.K0I1S4F6q1.oaS",
+      "createdAt": "2026-09-06T10:01:40.054Z"
+    },
+    {
+      "id": "a80c6120-b21e-42c9-a235-36db5a4deb02",
+      "username": "吹凉风",
+      "passwordHash": "$2b$10$8MM5xjZ5NaP4vo.rJzwcTuYjuHDbExd6tGJplk2tEzaAnJxqjkyXS",
+      "createdAt": "2026-09-06T10:25:09.328Z"
+    },
+    {
+      "id": "7aef5b5b-5249-4d7e-9998-b8a1f207871a",
+      "username": "合作共赢",
+      "passwordHash": "$2b$10$q0RywVF6qJoJ0WIKmgnMvepUlNvOtind08XyZNDcUXcAO5V19UQA2",
+      "createdAt": "2026-09-06T10:26:42.950Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": "68fb1717-7275-4974-b80e-9eba2ea32202",
+      "userId": "f413eee5-9e44-48e3-afbf-882b471aba88",
+      "name": "餐饮",
+      "type": "expense",
+      "color": "#F49AC1",
+      "icon": "utensils",
+      "order": 0,
+      "createdAt": "2026-09-06T10:01:40.055Z"
+    },
+    {
+      "id": "91950a5c-a5cc-4467-bd8d-6d7bed0123ff",
+      "userId": "f413eee5-9e44-48e3-afbf-882b471aba88",
+      "name": "交通",
+      "type": "expense",
+      "color": "#90CAF9",
+      "icon": "car",
+      "order": 1,
+      "createdAt": "2026-09-06T10:01:40.055Z"
+    },
+    {
+      "id": "4e8eb1f8-6913-4dd0-be9e-1132736e90db",
+      "userId": "f413eee5-9e44-48e3-afbf-882b471aba88",
+      "name": "购物",
+      "type": "expense",
+      "color": "#B39DDB",
+      "icon": "shopping-bag",
+      "order": 2,
+      "createdAt": "2026-09-06T10:01:40.055Z"
+    },
+    {
+      "id": "a4582983-5b01-491f-a095-a960cd7d227c",
+      "userId": "f413eee5-9e44-48e3-afbf-882b471aba88",
+      "name": "居家",
+      "type": "expense",
+      "color": "#80CBC4",
+      "icon": "home",
+      "order": 3,
+      "createdAt": "2026-09-06T10:01:40.055Z"
+    },
+    {
+      "id": "51b57534-9ce6-4c3a-bb1d-86382759775d",
+      "userId": "f413eee5-9e44-48e3-afbf-882b471aba88",
+      "name": "娱乐",
+      "type": "expense",
+      "color": "#F8BBD0",
+      "icon": "gamepad-2",
+      "order": 4,
+      "createdAt": "2026-09-06T10:01:40.055Z"
+    },
+    {
+      "id": "36478f98-dbbd-4b41-bccc-f8d0a7d79a4a",
+      "userId": "f413eee5-9e44-48e3-afbf-882b471aba88",
+      "name": "医疗",
+      "type": "expense",
+      "color": "#A5D6A7",
+      "icon": "heart-pulse",
+      "order": 5,
+      "createdAt": "2026-09-06T10:01:40.055Z"
+    },
+    {
+      "id": "943fe4f1-d476-4d47-aa57-7a2c3e11cc6f",
+      "userId": "f413eee5-9e44-48e3-afbf-882b471aba88",
+      "name": "人情",
+      "type": "expense",
+      "color": "#C5CAE9",
+      "icon": "gift",
+      "order": 6,
+      "createdAt": "2026-09-06T10:01:40.055Z"
+    },
+    {
+      "id": "7b930310-5704-4a69-a137-cd77b528af45",
+      "userId": "f413eee5-9e44-48e3-afbf-882b471aba88",
+      "name": "其他",
+      "type": "expense",
+      "color": "#CFD8DC",
+      "icon": "more-horizontal",
+      "order": 7,
+      "createdAt": "2026-09-06T10:01:40.055Z"
+    },
+    {
+      "id": "e0191a3a-94c3-4544-a34f-9b7e1974dd35",
+      "userId": "f413eee5-9e44-48e3-afbf-882b471aba88",
+      "name": "工资",
+      "type": "income",
+      "color": "#9CCC65",
+      "icon": "wallet",
+      "order": 8,
+      "createdAt": "2026-09-06T10:01:40.055Z"
+    },
+    {
+      "id": "a7e56ce3-84c5-438e-8df0-1d0983e7a557",
+      "userId": "f413eee5-9e44-48e3-afbf-882b471aba88",
+      "name": "兼职",
+      "type": "income",
+      "color": "#FFB74D",
+      "icon": "briefcase",
+      "order": 9,
+      "createdAt": "2026-09-06T10:01:40.055Z"
+    },
+    {
+      "id": "60e8a2e3-115c-4bad-ab5e-a8148df0e3b0",
+      "userId": "f413eee5-9e44-48e3-afbf-882b471aba88",
+      "name": "理财",
+      "type": "income",
+      "color": "#4DB6AC",
+      "icon": "trending-up",
+      "order": 10,
+      "createdAt": "2026-09-06T10:01:40.055Z"
+    },
+    {
+      "id": "748304d8-d755-4acb-8ac5-c9ddf4811bf1",
+      "userId": "f413eee5-9e44-48e3-afbf-882b471aba88",
+      "name": "其他收入",
+      "type": "income",
+      "color": "#9575CD",
+      "icon": "plus-circle",
+      "order": 11,
+      "createdAt": "2026-09-06T10:01:40.055Z"
+    },
+    {
+      "id": "3f6b95f1-92a3-405c-aa56-1f15ef7c3c64",
+      "userId": "a80c6120-b21e-42c9-a235-36db5a4deb02",
+      "name": "餐饮",
+      "type": "expense",
+      "color": "#F49AC1",
+      "icon": "utensils",
+      "order": 0,
+      "createdAt": "2026-09-06T10:25:09.332Z"
+    },
+    {
+      "id": "d6c028d8-fac2-4e0f-9914-cdb312634497",
+      "userId": "a80c6120-b21e-42c9-a235-36db5a4deb02",
+      "name": "交通",
+      "type": "expense",
+      "color": "#90CAF9",
+      "icon": "car",
+      "order": 1,
+      "createdAt": "2026-09-06T10:25:09.332Z"
+    },
+    {
+      "id": "8aeb0f12-f8d5-4883-8b27-256ffb61aa75",
+      "userId": "a80c6120-b21e-42c9-a235-36db5a4deb02",
+      "name": "购物",
+      "type": "expense",
+      "color": "#B39DDB",
+      "icon": "shopping-bag",
+      "order": 2,
+      "createdAt": "2026-09-06T10:25:09.332Z"
+    },
+    {
+      "id": "0b2ed5c4-8881-4d8c-a2ce-e9e90911a4ef",
+      "userId": "a80c6120-b21e-42c9-a235-36db5a4deb02",
+      "name": "居家",
+      "type": "expense",
+      "color": "#80CBC4",
+      "icon": "home",
+      "order": 3,
+      "createdAt": "2026-09-06T10:25:09.332Z"
+    },
+    {
+      "id": "7b306286-d8d7-4880-9fa9-a8d067bd2de9",
+      "userId": "a80c6120-b21e-42c9-a235-36db5a4deb02",
+      "name": "娱乐",
+      "type": "expense",
+      "color": "#F8BBD0",
+      "icon": "gamepad-2",
+      "order": 4,
+      "createdAt": "2026-09-06T10:25:09.332Z"
+    },
+    {
+      "id": "6484967e-7e1a-44a8-bdf1-e29c2e123721",
+      "userId": "a80c6120-b21e-42c9-a235-36db5a4deb02",
+      "name": "医疗",
+      "type": "expense",
+      "color": "#A5D6A7",
+      "icon": "heart-pulse",
+      "order": 5,
+      "createdAt": "2026-09-06T10:25:09.332Z"
+    },
+    {
+      "id": "3b2ac204-3300-448d-acea-394cd16ad26a",
+      "userId": "a80c6120-b21e-42c9-a235-36db5a4deb02",
+      "name": "人情",
+      "type": "expense",
+      "color": "#C5CAE9",
+      "icon": "gift",
+      "order": 6,
+      "createdAt": "2026-09-06T10:25:09.332Z"
+    },
+    {
+      "id": "b36e8f8b-c2ef-4cd2-aaa9-f6ac42ff9ee9",
+      "userId": "a80c6120-b21e-42c9-a235-36db5a4deb02",
+      "name": "其他",
+      "type": "expense",
+      "color": "#CFD8DC",
+      "icon": "more-horizontal",
+      "order": 7,
+      "createdAt": "2026-09-06T10:25:09.332Z"
+    },
+    {
+      "id": "2b4ea62c-e4b9-4d48-a57c-0b6dcfceb8f4",
+      "userId": "a80c6120-b21e-42c9-a235-36db5a4deb02",
+      "name": "工资",
+      "type": "income",
+      "color": "#9CCC65",
+      "icon": "wallet",
+      "order": 8,
+      "createdAt": "2026-09-06T10:25:09.332Z"
+    },
+    {
+      "id": "a19471c1-8d20-4e7f-945d-b5228a6608c9",
+      "userId": "a80c6120-b21e-42c9-a235-36db5a4deb02",
+      "name": "兼职",
+      "type": "income",
+      "color": "#FFB74D",
+      "icon": "briefcase",
+      "order": 9,
+      "createdAt": "2026-09-06T10:25:09.332Z"
+    },
+    {
+      "id": "463e448d-be33-4d53-b6db-6ef92ec5e84a",
+      "userId": "a80c6120-b21e-42c9-a235-36db5a4deb02",
+      "name": "理财",
+      "type": "income",
+      "color": "#4DB6AC",
+      "icon": "trending-up",
+      "order": 10,
+      "createdAt": "2026-09-06T10:25:09.332Z"
+    },
+    {
+      "id": "fffc94a2-cddb-4562-a71f-a229957d11b2",
+      "userId": "a80c6120-b21e-42c9-a235-36db5a4deb02",
+      "name": "其他收入",
+      "type": "income",
+      "color": "#9575CD",
+      "icon": "plus-circle",
+      "order": 11,
+      "createdAt": "2026-09-06T10:25:09.332Z"
+    },
+    {
+      "id": "c9d3ba6a-27f4-40df-a304-be4ea635cebe",
+      "userId": "7aef5b5b-5249-4d7e-9998-b8a1f207871a",
+      "name": "餐饮",
+      "type": "expense",
+      "color": "#F49AC1",
+      "icon": "utensils",
+      "order": 0,
+      "createdAt": "2026-09-06T10:26:42.951Z"
+    },
+    {
+      "id": "f6850283-8547-47f5-bda6-763415b1f5db",
+      "userId": "7aef5b5b-5249-4d7e-9998-b8a1f207871a",
+      "name": "交通",
+      "type": "expense",
+      "color": "#90CAF9",
+      "icon": "car",
+      "order": 1,
+      "createdAt": "2026-09-06T10:26:42.951Z"
+    },
+    {
+      "id": "3616f7ae-85f9-4fdb-9815-62a55394f3c9",
+      "userId": "7aef5b5b-5249-4d7e-9998-b8a1f207871a",
+      "name": "购物",
+      "type": "expense",
+      "color": "#B39DDB",
+      "icon": "shopping-bag",
+      "order": 2,
+      "createdAt": "2026-09-06T10:26:42.951Z"
+    },
+    {
+      "id": "ff794906-3aa0-41ab-8564-698ee9ba972e",
+      "userId": "7aef5b5b-5249-4d7e-9998-b8a1f207871a",
+      "name": "居家",
+      "type": "expense",
+      "color": "#80CBC4",
+      "icon": "home",
+      "order": 3,
+      "createdAt": "2026-09-06T10:26:42.951Z"
+    },
+    {
+      "id": "eb95c46c-5aba-4f31-9a04-a8681b56081b",
+      "userId": "7aef5b5b-5249-4d7e-9998-b8a1f207871a",
+      "name": "娱乐",
+      "type": "expense",
+      "color": "#F8BBD0",
+      "icon": "gamepad-2",
+      "order": 4,
+      "createdAt": "2026-09-06T10:26:42.951Z"
+    },
+    {
+      "id": "75c83257-2834-42fc-bbbb-0b98dd024406",
+      "userId": "7aef5b5b-5249-4d7e-9998-b8a1f207871a",
+      "name": "医疗",
+      "type": "expense",
+      "color": "#A5D6A7",
+      "icon": "heart-pulse",
+      "order": 5,
+      "createdAt": "2026-09-06T10:26:42.951Z"
+    },
+    {
+      "id": "ffce2985-7329-43fc-81db-0cedd4597ed8",
+      "userId": "7aef5b5b-5249-4d7e-9998-b8a1f207871a",
+      "name": "人情",
+      "type": "expense",
+      "color": "#C5CAE9",
+      "icon": "gift",
+      "order": 6,
+      "createdAt": "2026-09-06T10:26:42.951Z"
+    },
+    {
+      "id": "ce3782e0-915d-4e7f-b399-5e37f1249d9b",
+      "userId": "7aef5b5b-5249-4d7e-9998-b8a1f207871a",
+      "name": "其他",
+      "type": "expense",
+      "color": "#CFD8DC",
+      "icon": "more-horizontal",
+      "order": 7,
+      "createdAt": "2026-09-06T10:26:42.951Z"
+    },
+    {
+      "id": "c9e9e5a9-a9fb-4dfd-ae61-bd3231368eef",
+      "userId": "7aef5b5b-5249-4d7e-9998-b8a1f207871a",
+      "name": "工资",
+      "type": "income",
+      "color": "#9CCC65",
+      "icon": "wallet",
+      "order": 8,
+      "createdAt": "2026-09-06T10:26:42.951Z"
+    },
+    {
+      "id": "ddf189bc-ce83-4641-ad6d-32ce91113c35",
+      "userId": "7aef5b5b-5249-4d7e-9998-b8a1f207871a",
+      "name": "兼职",
+      "type": "income",
+      "color": "#FFB74D",
+      "icon": "briefcase",
+      "order": 9,
+      "createdAt": "2026-09-06T10:26:42.951Z"
+    },
+    {
+      "id": "ceb1e1a1-ec7c-4dbc-a25f-1196eec1b17d",
+      "userId": "7aef5b5b-5249-4d7e-9998-b8a1f207871a",
+      "name": "理财",
+      "type": "income",
+      "color": "#4DB6AC",
+      "icon": "trending-up",
+      "order": 10,
+      "createdAt": "2026-09-06T10:26:42.951Z"
+    },
+    {
+      "id": "b87875c2-3a8b-4b25-8d74-463a79eb13cc",
+      "userId": "7aef5b5b-5249-4d7e-9998-b8a1f207871a",
+      "name": "其他收入",
+      "type": "income",
+      "color": "#9575CD",
+      "icon": "plus-circle",
+      "order": 11,
+      "createdAt": "2026-09-06T10:26:42.951Z"
+    }
+  ],
+  "accounts": [
+    {
+      "id": "7ed922dd-cf91-40d0-9bdc-483377237c64",
+      "userId": "f413eee5-9e44-48e3-afbf-882b471aba88",
+      "name": "现金",
+      "type": "cash",
+      "initialBalance": 0,
+      "currency": "CNY",
+      "icon": "banknote",
+      "color": "#F49AC1",
+      "createdAt": "2026-09-06T10:01:40.055Z"
+    },
+    {
+      "id": "542edfd3-baad-4e51-9b0f-0cf5fab18270",
+      "userId": "f413eee5-9e44-48e3-afbf-882b471aba88",
+      "name": "银行卡",
+      "type": "card",
+      "initialBalance": 0,
+      "currency": "CNY",
+      "icon": "credit-card",
+      "color": "#90CAF9",
+      "createdAt": "2026-09-06T10:01:40.055Z"
+    },
+    {
+      "id": "6d20d0e2-8622-43d9-98ab-816db41d7711",
+      "userId": "f413eee5-9e44-48e3-afbf-882b471aba88",
+      "name": "支付宝",
+      "type": "alipay",
+      "initialBalance": 0,
+      "currency": "CNY",
+      "icon": "smartphone",
+      "color": "#4DB6AC",
+      "createdAt": "2026-09-06T10:01:40.055Z"
+    },
+    {
+      "id": "a274f1b1-3189-4696-a9bf-1c3227176aba",
+      "userId": "f413eee5-9e44-48e3-afbf-882b471aba88",
+      "name": "微信",
+      "type": "wechat",
+      "initialBalance": 0,
+      "currency": "CNY",
+      "icon": "message-circle",
+      "color": "#A5D6A7",
+      "createdAt": "2026-09-06T10:01:40.055Z"
+    },
+    {
+      "id": "f160f791-294d-4bd5-8cb1-2d7fd80a0995",
+      "userId": "a80c6120-b21e-42c9-a235-36db5a4deb02",
+      "name": "现金",
+      "type": "cash",
+      "initialBalance": 0,
+      "currency": "CNY",
+      "icon": "banknote",
+      "color": "#F49AC1",
+      "createdAt": "2026-09-06T10:25:09.332Z"
+    },
+    {
+      "id": "46d78b68-ad30-4315-acb3-2334c6b20d37",
+      "userId": "a80c6120-b21e-42c9-a235-36db5a4deb02",
+      "name": "银行卡",
+      "type": "card",
+      "initialBalance": 0,
+      "currency": "CNY",
+      "icon": "credit-card",
+      "color": "#90CAF9",
+      "createdAt": "2026-09-06T10:25:09.332Z"
+    },
+    {
+      "id": "78e73255-7740-46c5-9846-d66bccab56dd",
+      "userId": "a80c6120-b21e-42c9-a235-36db5a4deb02",
+      "name": "支付宝",
+      "type": "alipay",
+      "initialBalance": 0,
+      "currency": "CNY",
+      "icon": "smartphone",
+      "color": "#4DB6AC",
+      "createdAt": "2026-09-06T10:25:09.332Z"
+    },
+    {
+      "id": "b30e5956-50c7-4758-b13d-4a882a80f9ab",
+      "userId": "a80c6120-b21e-42c9-a235-36db5a4deb02",
+      "name": "微信",
+      "type": "wechat",
+      "initialBalance": 0,
+      "currency": "CNY",
+      "icon": "message-circle",
+      "color": "#A5D6A7",
+      "createdAt": "2026-09-06T10:25:09.332Z"
+    },
+    {
+      "id": "76412b41-a339-47eb-8b72-958021173b2e",
+      "userId": "7aef5b5b-5249-4d7e-9998-b8a1f207871a",
+      "name": "现金",
+      "type": "cash",
+      "initialBalance": 0,
+      "currency": "CNY",
+      "icon": "banknote",
+      "color": "#F49AC1",
+      "createdAt": "2026-09-06T10:26:42.951Z"
+    },
+    {
+      "id": "ce56d33a-5e2f-438f-830a-56292215f3ab",
+      "userId": "7aef5b5b-5249-4d7e-9998-b8a1f207871a",
+      "name": "银行卡",
+      "type": "card",
+      "initialBalance": 0,
+      "currency": "CNY",
+      "icon": "credit-card",
+      "color": "#90CAF9",
+      "createdAt": "2026-09-06T10:26:42.951Z"
+    },
+    {
+      "id": "a13ce83b-4535-4fd1-b6bc-08ed76c64092",
+      "userId": "7aef5b5b-5249-4d7e-9998-b8a1f207871a",
+      "name": "支付宝",
+      "type": "alipay",
+      "initialBalance": 0,
+      "currency": "CNY",
+      "icon": "smartphone",
+      "color": "#4DB6AC",
+      "createdAt": "2026-09-06T10:26:42.951Z"
+    },
+    {
+      "id": "07b5bfcd-8d43-4d42-ba3d-b0a511d69cc1",
+      "userId": "7aef5b5b-5249-4d7e-9998-b8a1f207871a",
+      "name": "微信",
+      "type": "wechat",
+      "initialBalance": 0,
+      "currency": "CNY",
+      "icon": "message-circle",
+      "color": "#A5D6A7",
+      "createdAt": "2026-09-06T10:26:42.951Z"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "1544a7d3-6661-4d8d-9de8-c35d4491d394",
+      "userId": "f413eee5-9e44-48e3-afbf-882b471aba88",
+      "type": "expense",
+      "amount": 88.5,
+      "categoryId": "68fb1717-7275-4974-b80e-9eba2ea32202",
+      "accountId": "7ed922dd-cf91-40d0-9bdc-483377237c64",
+      "note": "午餐",
+      "date": "2026-09-06",
+      "createdAt": "2026-09-06T10:02:22.584Z"
+    },
+    {
+      "id": "f8b913ec-c8dc-420c-a7bd-0928b397a858",
+      "userId": "f413eee5-9e44-48e3-afbf-882b471aba88",
+      "type": "income",
+      "amount": 5000,
+      "categoryId": "68fb1717-7275-4974-b80e-9eba2ea32202",
+      "accountId": "7ed922dd-cf91-40d0-9bdc-483377237c64",
+      "note": "工资",
+      "date": "2026-09-01",
+      "createdAt": "2026-09-06T10:02:23.047Z"
+    },
+    {
+      "id": "eac17135-ed05-42b2-8e3f-291471c77cba",
+      "userId": "f413eee5-9e44-48e3-afbf-882b471aba88",
+      "type": "transfer",
+      "amount": 200,
+      "categoryId": "__transfer__",
+      "accountId": "7ed922dd-cf91-40d0-9bdc-483377237c64",
+      "toAccountId": "542edfd3-baad-4e51-9b0f-0cf5fab18270",
+      "note": "现金 → 银行卡",
+      "date": "2026-09-06",
+      "createdAt": "2026-09-06T10:19:58.147Z"
+    }
+  ],
+  "budgets": [
+    {
+      "id": "389a46f5-a501-428c-a02d-bd5d29d9b752",
+      "userId": "f413eee5-9e44-48e3-afbf-882b471aba88",
+      "categoryId": "all",
+      "amount": 3000,
+      "period": "monthly",
+      "year": 2026,
+      "month": 9,
+      "createdAt": "2026-09-06T10:02:23.283Z"
+    }
+  ]
+}
