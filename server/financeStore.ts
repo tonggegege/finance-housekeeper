@@ -91,10 +91,9 @@ interface FinanceDb {
 
 const EMPTY_DB: FinanceDb = { users: [], categories: [], accounts: [], transactions: [], budgets: [] };
 
-/** 内存缓存：读操作直接命中，写操作更新后异步落盘 */
+/** 内存缓存：读操作直接命中，写操作更新后立即异步落盘 */
 let cache: FinanceDb = { ...EMPTY_DB };
 let snapshotCol: Collection | null = null;
-let persistTimer: ReturnType<typeof setTimeout> | null = null;
 
 /** 启动时调用：从 MongoDB 恢复数据；连不上则退回本地文件 */
 export async function initStore(): Promise<void> {
@@ -125,6 +124,18 @@ export async function initStore(): Promise<void> {
   cache = readFile();
 }
 
+/** 进程退出前 flush 最后的更改（Render 重启会发 SIGTERM） */
+process.on('SIGTERM', () => {
+  if (snapshotCol) {
+    void persistNow();
+  }
+});
+process.on('SIGINT', () => {
+  if (snapshotCol) {
+    void persistNow();
+  }
+});
+
 function readFile(): FinanceDb {
   try {
     if (fs.existsSync(financePath)) {
@@ -142,28 +153,41 @@ function readDb(): FinanceDb {
 
 function writeDb(db: FinanceDb): void {
   cache = db;
-  schedulePersist();
+  void persistNow();
 }
 
-/** 防抖：150ms 内的连续写合并成一次落盘 */
-function schedulePersist(): void {
-  if (persistTimer) clearTimeout(persistTimer);
-  persistTimer = setTimeout(() => {
-    void persistNow();
-  }, 150);
-}
+/** 异步落盘：本地文件 + MongoDB。fire-and-forget，不阻塞响应。
+ *  有简单并发保护：正在写时新调用自动忽略（最终一致性）。 */
+let persisting = false;
+let persistAfter = false;
 
 async function persistNow(): Promise<void> {
+  if (persisting) { persistAfter = true; return; }
+  persisting = true;
+
   try {
     fs.writeFileSync(financePath, JSON.stringify(cache, null, 2));
   } catch {
     /* ignore */
   }
-  if (!snapshotCol) return;
-  try {
-    await snapshotCol.replaceOne({ _id: 'main' as any }, { _id: 'main' as any, ...cache } as any, { upsert: true });
-  } catch (err) {
-    console.error('[store] MongoDB persist failed:', err);
+
+  if (snapshotCol) {
+    try {
+      await snapshotCol.replaceOne(
+        { _id: 'main' as any },
+        { _id: 'main' as any, ...cache } as any,
+        { upsert: true },
+      );
+    } catch (err) {
+      console.error('[store] MongoDB persist failed:', err);
+      persistAfter = true; // 失败时标记重试
+    }
+  }
+
+  persisting = false;
+  if (persistAfter) {
+    persistAfter = false;
+    void persistNow();
   }
 }
 
