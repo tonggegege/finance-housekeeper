@@ -162,31 +162,38 @@ let persisting = false;
 let persistAfter = false;
 
 async function persistNow(): Promise<void> {
-  if (persisting) { persistAfter = true; return; }
+  console.log('[store] persistNow() start, snapshotCol=', !!snapshotCol, 'persisting=', persisting);
+  if (persisting) { persistAfter = true; console.log('[store] already persisting, queued'); return; }
   persisting = true;
 
   try {
     fs.writeFileSync(financePath, JSON.stringify(cache, null, 2));
-  } catch {
-    /* ignore */
+    console.log('[store] local file written');
+  } catch (e) {
+    console.error('[store] local file write failed:', e);
   }
 
   if (snapshotCol) {
     try {
-      await snapshotCol.replaceOne(
+      console.log('[store] writing to MongoDB, users=', cache.users.length);
+      const result = await snapshotCol.replaceOne(
         { _id: 'main' as any },
         { _id: 'main' as any, ...cache } as any,
         { upsert: true },
       );
+      console.log('[store] MongoDB write OK, matched=', result.matchedCount, 'upserted=', result.upsertedCount);
     } catch (err) {
       console.error('[store] MongoDB persist failed:', err);
       persistAfter = true; // 失败时标记重试
     }
+  } else {
+    console.log('[store] snapshotCol is null, skipping MongoDB');
   }
 
   persisting = false;
   if (persistAfter) {
     persistAfter = false;
+    console.log('[store] retrying persist');
     void persistNow();
   }
 }
