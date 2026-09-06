@@ -14,3 +14,6 @@ services:
         generateValue: true
       - key: NODE_VERSION
         value: "20"
+      # 数据库连接串含密码，不写进仓库；由用户在 Render 控制台填写
+      - key: MONGODB_URI
+        sync: false
