@@ -6,6 +6,9 @@ import path from "path";
 import { fileURLToPath } from "url";
 import * as db from "./db.js";
 import financeRoutes from "./financeRoutes.js";
+import { initStore } from "./financeStore.js";
+
+const MONGODB_URI_SET = Boolean(process.env.MONGODB_URI);
 
 // 待处理的权限请求
 interface PendingPermission {
@@ -704,16 +707,20 @@ ${context}` : (systemPrompt || defaultSystemPrompt);
 // 放在所有具体路由之后挂载，避免其鉴权中间件拦截 /api/health 等已有接口
 app.use("/api", financeRoutes);
 
-// 启动服务器
-app.listen(PORT, () => {
-  console.log(`
+// 启动服务器：先恢复财务数据（MongoDB / 本地文件），再监听端口
+initStore()
+  .catch(err => console.error("[store] initStore error:", err))
+  .finally(() => {
+    app.listen(PORT, () => {
+      console.log(`
 ╔════════════════════════════════════════════╗
 ║                                            ║
 ║     ◉ API 服务器已启动                      ║
 ║                                            ║
 ║     地址: http://localhost:${PORT}            ║
-║     数据库: SQLite (data/chat.db)          ║
+║     存储: ${MONGODB_URI_SET ? "MongoDB" : "本地 JSON 文件"}          ║
 ║                                            ║
 ╚════════════════════════════════════════════╝
   `);
-});
+    });
+  });

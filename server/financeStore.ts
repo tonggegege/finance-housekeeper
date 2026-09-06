@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { v4 as uuidv4 } from 'uuid';
+import { MongoClient, type Collection } from 'mongodb';
 import { hashPassword } from './crypto.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -14,6 +15,9 @@ const financePath = path.join(dataDir, 'finance.json');
 if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir, { recursive: true });
 }
+
+// 配置了 MONGODB_URI 时，数据落到 MongoDB（Render 免费实例磁盘会重置，必须外置）
+const MONGODB_URI = process.env.MONGODB_URI || '';
 
 // ============= 类型 =============
 
@@ -85,7 +89,43 @@ interface FinanceDb {
 
 // ============= 读写 =============
 
-function readDb(): FinanceDb {
+const EMPTY_DB: FinanceDb = { users: [], categories: [], accounts: [], transactions: [], budgets: [] };
+
+/** 内存缓存：读操作直接命中，写操作更新后异步落盘 */
+let cache: FinanceDb = { ...EMPTY_DB };
+let snapshotCol: Collection | null = null;
+let persistTimer: ReturnType<typeof setTimeout> | null = null;
+
+/** 启动时调用：从 MongoDB 恢复数据；连不上则退回本地文件 */
+export async function initStore(): Promise<void> {
+  if (MONGODB_URI) {
+    try {
+      const client = new MongoClient(MONGODB_URI, { serverSelectionTimeoutMS: 10000 });
+      await client.connect();
+      snapshotCol = client.db('finance').collection('snapshot');
+      const doc = await snapshotCol.findOne({ _id: 'main' as any });
+      if (doc) {
+        cache = {
+          users: (doc.users as User[]) || [],
+          categories: (doc.categories as Category[]) || [],
+          accounts: (doc.accounts as Account[]) || [],
+          transactions: (doc.transactions as Transaction[]) || [],
+          budgets: (doc.budgets as Budget[]) || [],
+        };
+        console.log(`[store] MongoDB restored: ${cache.users.length} users / ${cache.transactions.length} txs`);
+      } else {
+        console.log('[store] MongoDB connected (empty)');
+      }
+      return;
+    } catch (err) {
+      console.error('[store] MongoDB init failed, fallback to local file:', err);
+      snapshotCol = null;
+    }
+  }
+  cache = readFile();
+}
+
+function readFile(): FinanceDb {
   try {
     if (fs.existsSync(financePath)) {
       return JSON.parse(fs.readFileSync(financePath, 'utf8')) as FinanceDb;
@@ -93,11 +133,38 @@ function readDb(): FinanceDb {
   } catch {
     /* ignore */
   }
-  return { users: [], categories: [], accounts: [], transactions: [], budgets: [] };
+  return { ...EMPTY_DB };
+}
+
+function readDb(): FinanceDb {
+  return cache;
 }
 
 function writeDb(db: FinanceDb): void {
-  fs.writeFileSync(financePath, JSON.stringify(db, null, 2));
+  cache = db;
+  schedulePersist();
+}
+
+/** 防抖：150ms 内的连续写合并成一次落盘 */
+function schedulePersist(): void {
+  if (persistTimer) clearTimeout(persistTimer);
+  persistTimer = setTimeout(() => {
+    void persistNow();
+  }, 150);
+}
+
+async function persistNow(): Promise<void> {
+  try {
+    fs.writeFileSync(financePath, JSON.stringify(cache, null, 2));
+  } catch {
+    /* ignore */
+  }
+  if (!snapshotCol) return;
+  try {
+    await snapshotCol.replaceOne({ _id: 'main' as any }, { _id: 'main' as any, ...cache } as any, { upsert: true });
+  } catch (err) {
+    console.error('[store] MongoDB persist failed:', err);
+  }
 }
 
 // ============= 用户 =============
